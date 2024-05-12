@@ -16,18 +16,19 @@ do
             echo 'パスワードの追加は成功しました' ;;
         'Get Password' )
             read -p 'サービス名を入力してください: ' service_name
-                if [ -z $service_name ];
+            password=$(grep "^$service_name" passwords.txt | cut -d: -f3)        
+                if [ -z '$password' ];
                 then
                     echo 'そのサービスは登録されていません'
                 else
                     echo 'サービス名: $service_name'
-                    echo 'ユーザー名: $(grep "^$service_name:" passwords.txt | cut -d : - f2)'
-                    echo 'パスワード: $(grep "^$service_name:" passwords.txt | cut -d : - f3)'
+                    echo 'ユーザー名: $(grep "^$service_name" passwords.txt | cut -d: -f2)'
+                    echo 'パスワード: $password'
                 fi ;;
         'Exit' )
             echo 'Thank you!' ;;
         *)
-            echo '入力が間違えています。(Add Password/Get password/Exit)から入力してください。' ;;
+            echo '入力が間違えています。(Add Password/Get Password/Exit)から入力してください。' ;;
     esac
 done
 
