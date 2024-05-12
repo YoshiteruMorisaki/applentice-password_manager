@@ -15,15 +15,14 @@ do
             echo $service_name:$user_name:$password >> passwords.txt
             echo 'パスワードの追加は成功しました' ;;
         'Get Password' )
-            read -p 'サービス名を入力してください: ' service_name
-            password=$(grep "^$service_name" passwords.txt | cut -d: -f3)        
-                if [ -z '$password' ];
+            read -p 'サービス名を入力してください: ' service_name        
+                if [ -z '$service_name' ];
                 then
                     echo 'そのサービスは登録されていません'
                 else
                     echo 'サービス名: $service_name'
-                    echo 'ユーザー名: $(grep "^$service_name" passwords.txt | cut -d: -f2)'
-                    echo 'パスワード: $password'
+                    echo 'ユーザー名: $(grep "^$service_name" passwords.txt | cut -d : -f2)'
+                    echo 'パスワード: $(grep "^$service_name" passwords.txt | cut -d : -f3)'
                 fi ;;
         'Exit' )
             echo 'Thank you!' ;;
