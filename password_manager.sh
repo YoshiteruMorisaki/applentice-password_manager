@@ -6,7 +6,7 @@ do
     echo '次の選択肢から入力してください(Add Password/Get Password/Exit): '
     read choice
 
-    case $choice in ;
+    case $choice in
         'Add Password' )
             read -p 'サービス名を入力してください: ' service_name
             read -p 'ユーザー名を入力してください: ' user_name
@@ -27,7 +27,7 @@ do
         'Exit' )
             echo 'Thank you!' ;;
         *)
-            echo '入力が間違えています。(Add Password/Get password/Exit)から入力してください。'
+            echo '入力が間違えています。(Add Password/Get password/Exit)から入力してください。' ;;
     esac
 done
 
